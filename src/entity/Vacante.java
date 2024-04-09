@@ -120,7 +120,6 @@ public class Vacante {
                 ", duracion='" + duracion + '\'' +
                 ", estado=" + estado +
                 ", id_Empresa=" + id_Empresa +
-                ", objEmpresa=" + objEmpresa +
                 ", tecnologia:" + tecnologia +
                 '}';
     }

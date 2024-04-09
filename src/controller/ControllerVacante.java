@@ -87,6 +87,15 @@ public class ControllerVacante {
         }
         JOptionPane.showMessageDialog(null, listaDeClientes);
     }
+    public static void listarPorTecnologia(){
+        String nombre = JOptionPane.showInputDialog("Ingrese el nombre de la tecnologia de vacante por la que desea filtrar");
+
+        String listaDeClientes = "LISTA DE VACANTES POR TECNOLOGIA POR NOMBRE \n";
+        for (Object vacante :  instanceModel().buscarPorTecnologiaVacante(nombre)){
+            listaDeClientes += (Vacante) vacante + "\n";
+        }
+        JOptionPane.showMessageDialog(null, listaDeClientes);
+    }
     public static ModelVacante instanceModel(){
         return new ModelVacante();
     }

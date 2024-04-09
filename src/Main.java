@@ -56,7 +56,8 @@ public class Main {
                                 3 - Actualizar vacante
                                 4 - Listar vacante
                                 5 - Buscar vacantes por titulo
-                                6 - Salir 
+                                6 - Buscar vacante por tecnologia
+                                7 - Salir 
                                 """));
 
                         switch (opcionVacante){
@@ -75,8 +76,11 @@ public class Main {
                             case 5:
                                 ControllerVacante.listarPorTitulo();
                                 break;
+                            case 6:
+                                ControllerVacante.listarPorTecnologia();
+                                break;
                         }
-                    }while (opcionVacante != 6);
+                    }while (opcionVacante != 7);
                     break;
 
                 case 3:

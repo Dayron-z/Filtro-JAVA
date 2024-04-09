@@ -208,4 +208,40 @@ public class ModelVacante implements CRUD {
 
         ConfigDB.closeConnection();
         return listaClientes;
-    }}
+    }
+
+    public ArrayList<Object> buscarPorTecnologiaVacante(String tecnologia){
+        Connection objConnection = ConfigDB.openConnection();
+        ArrayList<Object> listaClientes = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM vacante WHERE tecnologia  LIKE ?;";
+            PreparedStatement objPrepare = objConnection.prepareStatement(sql);
+
+            objPrepare.setString(1, "%"+tecnologia+"%");
+
+            ResultSet objResult =  objPrepare.executeQuery();
+
+            while (objResult.next()){
+                Vacante objVacante = new Vacante();
+
+                objVacante.setId(objResult.getInt("id_vacante"));
+                objVacante.setTitutlo(objResult.getString("titutlo"));
+                objVacante.setDescripcion(objResult.getString("descripcion"));
+                objVacante.setDuracion(objResult.getString("duracion"));
+                objVacante.setEstado(Estado.valueOf(objResult.getString("estado")));
+                objVacante.setId_Empresa(objResult.getInt("id_empresa"));
+                objVacante.setTecnologia(objResult.getString("tecnologia"));
+
+                listaClientes.add(objVacante);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error en model cliente buscar por nombre: " + e.getMessage());
+        }
+
+        ConfigDB.closeConnection();
+        return listaClientes;
+    }
+
+}
+
