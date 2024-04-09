@@ -2,6 +2,8 @@ package model;
 
 import database.ConfigDB;
 import entity.Coder;
+import entity.Estado;
+import entity.Vacante;
 import interfaces.CRUD;
 
 import javax.swing.*;
@@ -169,4 +171,71 @@ public class ModelCoder implements CRUD {
         ConfigDB.closeConnection();
         return objCoder;
     }
+
+    public ArrayList<Object> buscarPorCohorteCoder(int cohorte){
+        Connection objConnection = ConfigDB.openConnection();
+        ArrayList<Object> listaCoder = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM coder WHERE cohorte LIKE ?;";
+            PreparedStatement objPrepare = objConnection.prepareStatement(sql);
+
+            objPrepare.setInt(1, cohorte);
+
+            ResultSet objResult =  objPrepare.executeQuery();
+
+            while (objResult.next()){
+                Coder objCoder = new Coder();
+                objCoder.setId(objResult.getInt("id_coder"));
+                objCoder.setNombre(objResult.getString("nombre_coder"));
+                objCoder.setApellido(objResult.getString("apellidos"));
+                objCoder.setDocumento(objResult.getString("documento"));
+                objCoder.setCohorte(objResult.getInt("cohorte"));
+                objCoder.setCv(objResult.getString("cv"));
+                objCoder.setClan(objResult.getString("clan"));
+
+                listaCoder.add(objCoder);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error en model cliente buscar por nombre: " + e.getMessage());
+        }
+
+        ConfigDB.closeConnection();
+        return listaCoder;
+    }
+
+    public ArrayList<Object> buscarCoderPorClan(String clan){
+        Connection objConnection = ConfigDB.openConnection();
+        ArrayList<Object> listaCoder = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM coder WHERE clan LIKE ?;";
+            PreparedStatement objPrepare = objConnection.prepareStatement(sql);
+
+            objPrepare.setString(1, "%"+clan+"%");
+
+            ResultSet objResult =  objPrepare.executeQuery();
+
+            while (objResult.next()){
+                Coder objCoder = new Coder();
+                objCoder.setId(objResult.getInt("id_coder"));
+                objCoder.setNombre(objResult.getString("nombre_coder"));
+                objCoder.setApellido(objResult.getString("apellidos"));
+                objCoder.setDocumento(objResult.getString("documento"));
+                objCoder.setCohorte(objResult.getInt("cohorte"));
+                objCoder.setCv(objResult.getString("cv"));
+                objCoder.setClan(objResult.getString("clan"));
+
+                listaCoder.add(objCoder);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error en model cliente buscar por nombre: " + e.getMessage());
+        }
+
+        ConfigDB.closeConnection();
+        return listaCoder;
+    }
+
+
+
 }

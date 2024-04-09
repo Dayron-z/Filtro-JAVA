@@ -27,7 +27,9 @@ public class Main {
                                 2 - Eliminar Coder 
                                 3 - Actualizar Coder
                                 4 - Listar Coder
-                                5 - Salir 
+                                5 - Buscar coder por cohorte
+                                6 - Buscar coder por clan
+                                7 - Salir 
                                 """));
 
                         switch (opcionCoder){
@@ -43,8 +45,14 @@ public class Main {
                             case 4:
                                 ControllerCoder.listar();
                                 break;
+                            case 5:
+                                ControllerCoder.listarPorCohorte();
+                                break;
+                            case 6:
+                                ControllerCoder.listarPorClan();
+                                break;
                         }
-                    }while (opcionCoder != 5);
+                    }while (opcionCoder != 7);
 
                     break;
 

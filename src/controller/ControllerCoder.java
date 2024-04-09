@@ -1,6 +1,7 @@
 package controller;
 
 import entity.Coder;
+import entity.Vacante;
 import model.ModelCoder;
 
 import javax.swing.*;
@@ -44,6 +45,24 @@ public class ControllerCoder {
         String cv = JOptionPane.showInputDialog("Ingrese el cv del coder", objCliente.getCv());
 
         instanceModel().update(new Coder(id, nombre, apellido, documento, cohorte ,cv, clan));
+    }
+    public static void listarPorCohorte(){
+        int cohorte = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de cohorte por el que deseas filtrar"));
+
+        String listaDeClientes = "LISTA DE CODERS POR COHORTE\n";
+        for (Object coder :  instanceModel().buscarPorCohorteCoder(cohorte)){
+            listaDeClientes += (Coder) coder + "\n";
+        }
+        JOptionPane.showMessageDialog(null, listaDeClientes);
+    }
+    public static void listarPorClan(){
+        String clan = JOptionPane.showInputDialog("Ingrese el clan por el que deseas filtrar");
+
+        String listaDeClientes = "LISTA DE CODERS POR CLAN\n";
+        for (Object coder :  instanceModel().buscarCoderPorClan(clan)){
+            listaDeClientes += (Coder) coder + "\n";
+        }
+        JOptionPane.showMessageDialog(null, listaDeClientes);
     }
     public static ModelCoder instanceModel(){
         return new ModelCoder();
