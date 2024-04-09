@@ -53,7 +53,7 @@ public class ControllerVacante {
         String titulo = JOptionPane.showInputDialog( "Ingrese el titulo de la vacante", objVacante.getTitutlo());
         String descripcion  = JOptionPane.showInputDialog( "Ingrese la descripcion de la vacante", objVacante.getDescripcion());
         String duracion  = JOptionPane.showInputDialog("Ingrese la duracion de la vacante", objVacante.getDuracion());
-        String tecnologia = JOptionPane.showInputDialog("Ingrese la tecnologia de la vacante");
+        String tecnologia = JOptionPane.showInputDialog("Ingrese la tecnologia de la vacante", objVacante.getTecnologia());
         int id_empresa = Integer.parseInt(JOptionPane.showInputDialog(ControllerEmpresa.listarString()  + "Ingrese el id de la empresa dueña de la vacante" , objVacante.getId_Empresa()));
 
         String estado = JOptionPane.showInputDialog("""

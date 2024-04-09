@@ -10,21 +10,23 @@ public class Coder {
     private String clan;
 
 
-    public Coder(int id, String nombre, String apellido, String documento, int cohorte, String cv) {
+    public Coder(int id, String nombre, String apellido, String documento, int cohorte, String cv, String clan) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.documento = documento;
         this.cohorte = cohorte;
         this.cv = cv;
+        this.clan = clan;
     }
 
-    public Coder(String nombre, String apellido, String documento, int cohorte, String cv) {
+    public Coder(String nombre, String apellido, String documento, int cohorte, String cv, String clan) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.documento = documento;
         this.cohorte = cohorte;
         this.cv = cv;
+        this.clan = clan;
     }
 
     public Coder() {
@@ -96,6 +98,7 @@ public class Coder {
                 ", documento='" + documento + '\'' +
                 ", cohorte=" + cohorte +
                 ", cv='" + cv + '\'' +
+                ", clan= " + clan +
                 '}';
     }
 }

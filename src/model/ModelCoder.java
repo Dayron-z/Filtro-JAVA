@@ -31,6 +31,7 @@ public class ModelCoder implements CRUD {
                 objCoder.setDocumento(objResult.getString("documento"));
                 objCoder.setCohorte(objResult.getInt("cohorte"));
                 objCoder.setCv(objResult.getString("cv"));
+                objCoder.setClan(objResult.getString("clan"));
 
 
 
@@ -50,7 +51,7 @@ public class ModelCoder implements CRUD {
         Connection objConnection = ConfigDB.openConnection();
 
         try {
-            String sql = "INSERT INTO coder (nombre_coder, apellidos, documento, cohorte, cv) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO coder (nombre_coder, apellidos, documento, cohorte, cv, clan) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement objPrepare = objConnection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
             objPrepare.setString(1, objCoder.getNombre());
@@ -58,6 +59,7 @@ public class ModelCoder implements CRUD {
             objPrepare.setString(3, objCoder.getDocumento());
             objPrepare.setInt(4, objCoder.getCohorte());
             objPrepare.setString(5, objCoder.getCv());
+            objPrepare.setString(6, objCoder.getClan());
 
 
             objPrepare.execute();
@@ -84,7 +86,7 @@ public class ModelCoder implements CRUD {
         boolean isUpdate = false;
 
         try {
-            String sql = "UPDATE coder SET nombre_coder = ?, apellidos = ?, documento = ?, cohorte = ? , cv = ? WHERE id_coder = ?;";
+            String sql = "UPDATE coder SET nombre_coder = ?, apellidos = ?, documento = ?, cohorte = ? , cv = ?, clan = ? WHERE id_coder = ?;";
             PreparedStatement objPrepare = objConnection.prepareStatement(sql);
 
             objPrepare.setString(1, objCoder.getNombre());
@@ -92,7 +94,8 @@ public class ModelCoder implements CRUD {
             objPrepare.setString(3, objCoder.getDocumento());
             objPrepare.setInt(4, objCoder.getCohorte());
             objPrepare.setString(5, objCoder.getCv());
-            objPrepare.setInt(6, objCoder.getId());
+            objPrepare.setString(6, objCoder.getClan());
+            objPrepare.setInt(7, objCoder.getId());
 
 
 
@@ -157,6 +160,7 @@ public class ModelCoder implements CRUD {
                 objCoder.setDocumento(objResult.getString("documento"));
                 objCoder.setCohorte(objResult.getInt("cohorte"));
                 objCoder.setCv(objResult.getString("cv"));
+                objCoder.setClan(objResult.getString("clan"));
             }
         } catch (SQLException e) {
             System.out.println("Error en model cliente findById: " + e.getMessage());
