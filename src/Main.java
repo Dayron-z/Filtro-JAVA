@@ -1,5 +1,6 @@
 
 import controller.ControllerCoder;
+import controller.ControllerVacante;
 
 import javax.swing.*;
 
@@ -48,27 +49,28 @@ public class Main {
                 case 2:
                     do {
                         opcionVacante = Integer.parseInt(JOptionPane.showInputDialog("""
-                                1 - Crear cliente
-                                2 - Eliminar cliente 
-                                3 - Actualizar cliente
-                                4 - Listar cliente
-                                5 - Buscar cliente por nombre
-                                6 - Salir 
+                                1 - Crear vacante
+                                2 - Eliminar vacante 
+                                3 - Actualizar vacante
+                                4 - Listar vacante
+                                5 - Salir 
                                 """));
 
                         switch (opcionVacante){
                             case 1:
+                                ControllerVacante.crear();
                                 break;
                             case 2:
+                                ControllerVacante.delete();
                                 break;
                             case 3:
+                                ControllerVacante.update();
                                 break;
                             case 4:
-                                break;
-                            case 5:
+                                ControllerVacante.listar();
                                 break;
                         }
-                    }while (opcionVacante != 6);
+                    }while (opcionVacante != 5);
                     break;
 
                 case 3:
@@ -83,6 +85,7 @@ public class Main {
 
                         switch (opcionContratacion){
                             case 1:
+
                                 break;
                             case 2:
                                 break;

@@ -59,7 +59,7 @@ public class ModelVacante implements CRUD {
         Connection objConnection = ConfigDB.openConnection();
 
         try {
-            String sql = "INSERT INTO producto (titutlo, descripcion, duracion, estado, id_empresa) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO vacante (titutlo, descripcion, duracion, estado, id_empresa) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement objPrepare = objConnection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
             objPrepare.setString(1, objVacante.getTitutlo());
@@ -96,7 +96,7 @@ public class ModelVacante implements CRUD {
         Boolean isUpdate = false;
 
         try {
-            String sql = "UPDATE producto SET titutlo = ?, descripcion = ?, duracion = ?, estado = ?,  id_empresa = ? WHERE id_vacante = ?";
+            String sql = "UPDATE vacante SET titutlo = ?, descripcion = ?, duracion = ?, estado = ?,  id_empresa = ? WHERE id_vacante = ?";
             PreparedStatement objPrepare = objConnection.prepareStatement(sql);
 
             objPrepare.setString(1, objVacante.getTitutlo());
@@ -164,6 +164,7 @@ public class ModelVacante implements CRUD {
                 objVacante.setDescripcion(objResult.getString("descripcion"));
                 objVacante.setDuracion(objResult.getString("duracion"));
                 objVacante.setEstado(Estado.valueOf(objResult.getString("estado")));
+                objVacante.setId_Empresa(objResult.getInt("id_empresa"));
             }
         } catch (SQLException e) {
             System.out.println("Error en model cliente findById: " + e.getMessage());

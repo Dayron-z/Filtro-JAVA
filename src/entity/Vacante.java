@@ -20,6 +20,16 @@ public class Vacante {
         this.objEmpresa = objEmpresa;
     }
 
+
+    public Vacante(int id, String titutlo, String descripcion, String duracion, Estado estado, int id_Empresa) {
+        this.id = id;
+        this.titutlo = titutlo;
+        this.descripcion = descripcion;
+        this.duracion = duracion;
+        this.estado = estado;
+        this.id_Empresa = id_Empresa;
+    }
+
     public Vacante(String titutlo, String descripcion, String duracion, Estado estado, int id_Empresa) {
         this.titutlo = titutlo;
         this.descripcion = descripcion;
