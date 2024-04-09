@@ -33,6 +33,7 @@ public class ModelVacante implements CRUD {
                 objVacante.setDescripcion(objResult.getString("descripcion"));
                 objVacante.setDuracion(objResult.getString("duracion"));
                 objVacante.setEstado(Estado.valueOf(objResult.getString("estado")));
+                objVacante.setTecnologia(objResult.getString("tecnologia"));
 
 
                 Empresa objEmpresa = new Empresa();
@@ -59,7 +60,7 @@ public class ModelVacante implements CRUD {
         Connection objConnection = ConfigDB.openConnection();
 
         try {
-            String sql = "INSERT INTO vacante (titutlo, descripcion, duracion, estado, id_empresa) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO vacante (titutlo, descripcion, duracion, estado, id_empresa, tecnologia) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement objPrepare = objConnection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
             objPrepare.setString(1, objVacante.getTitutlo());
@@ -67,6 +68,7 @@ public class ModelVacante implements CRUD {
             objPrepare.setString(3, objVacante.getDuracion());
             objPrepare.setString(4, String.valueOf(objVacante.getEstado()));
             objPrepare.setInt(5, objVacante.getId_Empresa());
+            objPrepare.setString(6, objVacante.getTecnologia());
 
 
 
@@ -96,7 +98,7 @@ public class ModelVacante implements CRUD {
         Boolean isUpdate = false;
 
         try {
-            String sql = "UPDATE vacante SET titutlo = ?, descripcion = ?, duracion = ?, estado = ?,  id_empresa = ? WHERE id_vacante = ?";
+            String sql = "UPDATE vacante SET titutlo = ?, descripcion = ?, duracion = ?, estado = ?,  id_empresa = ?, tecnologia = ?  WHERE id_vacante = ?";
             PreparedStatement objPrepare = objConnection.prepareStatement(sql);
 
             objPrepare.setString(1, objVacante.getTitutlo());
@@ -104,7 +106,8 @@ public class ModelVacante implements CRUD {
             objPrepare.setString(3, objVacante.getDuracion());
             objPrepare.setString(4, String.valueOf(objVacante.getEstado()));
             objPrepare.setInt(5, objVacante.getId_Empresa());
-            objPrepare.setInt(6, objVacante.getId());
+            objPrepare.setString(6, objVacante.getTecnologia());
+            objPrepare.setInt(7, objVacante.getId());
 
 
             int filasAfectadas =  objPrepare.executeUpdate();
@@ -165,6 +168,7 @@ public class ModelVacante implements CRUD {
                 objVacante.setDuracion(objResult.getString("duracion"));
                 objVacante.setEstado(Estado.valueOf(objResult.getString("estado")));
                 objVacante.setId_Empresa(objResult.getInt("id_empresa"));
+                objVacante.setTecnologia(objResult.getString("tecnologia"));
             }
         } catch (SQLException e) {
             System.out.println("Error en model cliente findById: " + e.getMessage());

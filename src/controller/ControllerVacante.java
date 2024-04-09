@@ -25,6 +25,7 @@ public class ControllerVacante {
         String titulo = JOptionPane.showInputDialog( "Ingrese el titulo de la vacante ");
         String descripcion  = JOptionPane.showInputDialog( "Ingrese la descripcion de la vacante");
         String duracion  = JOptionPane.showInputDialog("Ingrese la duracion de la vacante");
+        String tecnologia = JOptionPane.showInputDialog("Ingrese la tecnologia de la vacante");
         int id_empresa = Integer.parseInt(JOptionPane.showInputDialog(ControllerEmpresa.listarString()  + "Ingrese el id de la empresa dueña de la vacante"));
 
         String estado = JOptionPane.showInputDialog("""
@@ -41,7 +42,7 @@ public class ControllerVacante {
                 break;
         }
 
-        instanceModel().create(new Vacante(titulo, descripcion, duracion, estadoUsuario, id_empresa));
+        instanceModel().create(new Vacante(titulo, descripcion, duracion, estadoUsuario, id_empresa, tecnologia));
         JOptionPane.showMessageDialog(null, "La vacante fue creada con éxito");
     }
     public static void update(){
@@ -52,6 +53,7 @@ public class ControllerVacante {
         String titulo = JOptionPane.showInputDialog( "Ingrese el titulo de la vacante", objVacante.getTitutlo());
         String descripcion  = JOptionPane.showInputDialog( "Ingrese la descripcion de la vacante", objVacante.getDescripcion());
         String duracion  = JOptionPane.showInputDialog("Ingrese la duracion de la vacante", objVacante.getDuracion());
+        String tecnologia = JOptionPane.showInputDialog("Ingrese la tecnologia de la vacante");
         int id_empresa = Integer.parseInt(JOptionPane.showInputDialog(ControllerEmpresa.listarString()  + "Ingrese el id de la empresa dueña de la vacante" , objVacante.getId_Empresa()));
 
         String estado = JOptionPane.showInputDialog("""
@@ -70,7 +72,7 @@ public class ControllerVacante {
         }
 
 
-        instanceModel().update(new Vacante(id, titulo, descripcion, duracion, estadoUsuario ,id_empresa));
+        instanceModel().update(new Vacante(id, titulo, descripcion, duracion, estadoUsuario ,id_empresa, tecnologia));
     }
     public  static void delete(){
         int id = Integer.parseInt(JOptionPane.showInputDialog(listarString() + "\nIngrese el id de la vacante  que desea eliminar"));

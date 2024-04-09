@@ -7,6 +7,7 @@ public class Coder {
     private String documento;
     private int cohorte;
     private String cv;
+    private String clan;
 
 
     public Coder(int id, String nombre, String apellido, String documento, int cohorte, String cv) {
@@ -29,6 +30,14 @@ public class Coder {
     public Coder() {
     }
 
+
+    public String getClan() {
+        return clan;
+    }
+
+    public void setClan(String clan) {
+        this.clan = clan;
+    }
 
     public int getId() {
         return id;

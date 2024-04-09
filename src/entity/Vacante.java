@@ -9,6 +9,9 @@ public class Vacante {
     private Estado estado;
     private int id_Empresa;
     private Empresa objEmpresa;
+    private String tecnologia;
+
+
 
     public Vacante(int id, String titutlo, String descripcion, String duracion, Estado estado, int id_Empresa, Empresa objEmpresa) {
         this.id = id;
@@ -21,24 +24,35 @@ public class Vacante {
     }
 
 
-    public Vacante(int id, String titutlo, String descripcion, String duracion, Estado estado, int id_Empresa) {
+    public Vacante(int id, String titutlo, String descripcion, String duracion, Estado estado, int id_Empresa, String tecnologia) {
         this.id = id;
         this.titutlo = titutlo;
         this.descripcion = descripcion;
         this.duracion = duracion;
         this.estado = estado;
         this.id_Empresa = id_Empresa;
+        this.tecnologia = tecnologia;
     }
 
-    public Vacante(String titutlo, String descripcion, String duracion, Estado estado, int id_Empresa) {
+    public Vacante(String titutlo, String descripcion, String duracion, Estado estado, int id_Empresa, String tecnologia) {
         this.titutlo = titutlo;
         this.descripcion = descripcion;
         this.duracion = duracion;
         this.estado = estado;
         this.id_Empresa = id_Empresa;
+        this.tecnologia = tecnologia;
     }
 
     public Vacante() {
+    }
+
+
+    public String getTecnologia() {
+        return tecnologia;
+    }
+
+    public void setTecnologia(String tecnologia) {
+        this.tecnologia = tecnologia;
     }
 
     public int getId() {
@@ -107,6 +121,7 @@ public class Vacante {
                 ", estado=" + estado +
                 ", id_Empresa=" + id_Empresa +
                 ", objEmpresa=" + objEmpresa +
+                ", tecnologia:" + tecnologia +
                 '}';
     }
 }
