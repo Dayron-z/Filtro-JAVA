@@ -47,8 +47,8 @@ public class ControllerContratacion {
         }
 
 
-        instanceModel().create(new Contratacion(estadoUsuario, salario_contratacion, id_vacante, id_coder));
-        JOptionPane.showMessageDialog(null, "La contratacion fue creada con éxito");
+        Contratacion objContratacion =  (Contratacion) instanceModel().create(new Contratacion(estadoUsuario, salario_contratacion, id_vacante, id_coder));
+        JOptionPane.showMessageDialog(null, "La contratacion fue creada con éxito" + objContratacion);
     }
     public static void update(){
         Estado estadoUsuario = Estado.INACTIVA;
