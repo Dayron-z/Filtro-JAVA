@@ -50,7 +50,7 @@ public class ModelContratacion implements CRUD {
                 objCoder.setNombre(objResult.getString("nombre_coder"));
                 objCoder.setApellido(objResult.getString("apellidos"));
                 objCoder.setDocumento(objResult.getString("documento"));
-                objCoder.setCohorte(objResult.getInt("contacto"));
+                objCoder.setCohorte(objResult.getInt("cohorte"));
                 objCoder.setCv(objResult.getString("cv"));
 
                 objContratacion.setObjCoder(objCoder);
@@ -73,7 +73,7 @@ public class ModelContratacion implements CRUD {
         Connection objConnection = ConfigDB.openConnection();
 
         try {
-            String sql = "INSERT INTO vacante (estado, salario, id_vacante, id_coder) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO contratacion (estado, salario, id_vacante, id_coder) VALUES (?, ?, ?, ?)";
             PreparedStatement objPrepare = objConnection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
             objPrepare.setString(1, String.valueOf(objContratacion.getEstado()));
@@ -176,7 +176,7 @@ public class ModelContratacion implements CRUD {
             while (objResult.next()){
                 objContratacion.setId(objResult.getInt("id_contratacion"));
                 objContratacion.setFecha_aplicacion(objResult.getString("fecha_aplicacion"));
-                objContratacion.setEstado(Estado.valueOf(objResult.getString("contratacion_estado")));
+                objContratacion.setEstado(Estado.valueOf(objResult.getString("estado")));
                 objContratacion.setSalario(objResult.getBigDecimal("salario"));
                 objContratacion.setId_vacante(objResult.getInt("id_vacante"));
                 objContratacion.setId_coder(objResult.getInt("id_coder"));

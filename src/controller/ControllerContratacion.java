@@ -24,12 +24,12 @@ public class ControllerContratacion {
     public static void crear(){
 
 
-        Estado estadoUsuario = null;
+        Estado estadoUsuario = Estado.INACTIVA;
 
         int salario = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el salario de la contratación"));
         BigDecimal salario_contratacion = new BigDecimal(salario);
-        int id_vacante = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id de la vacante"));
-        int id_coder = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id de la vacante"));
+        int id_vacante = Integer.parseInt(JOptionPane.showInputDialog(ControllerVacante.listarString()  + "Ingrese el id de la vacante"));
+        int id_coder = Integer.parseInt(JOptionPane.showInputDialog(ControllerCoder.listarString()  + "Ingrese el id del coder"));
 
 
         String estado = JOptionPane.showInputDialog("""
@@ -51,11 +51,11 @@ public class ControllerContratacion {
         JOptionPane.showMessageDialog(null, "La contratacion fue creada con éxito");
     }
     public static void update(){
-        Estado estadoUsuario = null;
+        Estado estadoUsuario = Estado.INACTIVA;
         int id = Integer.parseInt(JOptionPane.showInputDialog(listarString() + "\nIngrese el id de la contratacion que desea actualizar"));
         Contratacion objContratacion = (Contratacion) instanceModel().findByID(id);
 
-        int salario = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el salario de la contratación", objContratacion.getSalario()));
+        int salario = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el salario de la contratación"));
         BigDecimal salario_contratacion = new BigDecimal(salario);
         int id_vacante = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id de la vacante", objContratacion.getId_vacante()));
         int id_coder = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id de la vacante", objContratacion.getId_coder()));
@@ -65,7 +65,7 @@ public class ControllerContratacion {
                 Que tipo de estado tiene la contratcion
                 1 - ACTIVA
                 2 - INACTIVA
-                """,  objContratacion.getEstado());
+                """);
         switch (estado){
             case "1":
                 estadoUsuario = (Estado.ACTIVA);
@@ -82,8 +82,6 @@ public class ControllerContratacion {
         int id = Integer.parseInt(JOptionPane.showInputDialog(listarString() + "\nIngrese el id de la contratacion que desea eliminar"));
         instanceModel().delete(id);
     }
-
-
     public static ModelContratacion instanceModel(){
         return new ModelContratacion();
     }

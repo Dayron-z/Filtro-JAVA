@@ -141,7 +141,7 @@ public class ModelVacante implements CRUD {
             }
 
         } catch (SQLException e) {
-            System.out.println("Error en model producto" + e.getMessage());
+            System.out.println("Error en model vacante" + e.getMessage());
         }
         ConfigDB.closeConnection();
         return isDelete;

@@ -1,5 +1,7 @@
 
 import controller.ControllerCoder;
+import controller.ControllerContratacion;
+import controller.ControllerEmpresa;
 import controller.ControllerVacante;
 
 import javax.swing.*;
@@ -76,22 +78,25 @@ public class Main {
                 case 3:
                     do {
                         opcionContratacion = Integer.parseInt(JOptionPane.showInputDialog("""
-                                1 - Crear producto
-                                2 - Eliminar producto 
-                                3 - Actualizar producto
-                                4 - Listar producto
+                                1 - Crear contratacion
+                                2 - Eliminar contratacion 
+                                3 - Actualizar contratacion
+                                4 - Listar contratacion
                                 5 - Salir 
                                  """));
 
                         switch (opcionContratacion){
                             case 1:
-
+                                ControllerContratacion.crear();
                                 break;
                             case 2:
+                                ControllerContratacion.delete();
                                 break;
                             case 3:
+                                ControllerContratacion.update();
                                 break;
                             case 4:
+                                ControllerContratacion.listar();
                                 break;
                         }
 
@@ -101,25 +106,16 @@ public class Main {
                 case 4:
                     do {
                         opcionEmpresa = Integer.parseInt(JOptionPane.showInputDialog("""
-                                1 - Crear compra
-                                2 - Eliminar compra 
-                                3 - Actualizar compra 
-                                4 - Listar compra 
-                                5 - Salir
-                                
+                                1 - Listar empresas 
+                                2 - Salir
                                 """));
 
                         switch (opcionEmpresa){
                             case 1:
-                                break;
-                            case 2:
-                                break;
-                            case 3:
-                                break;
-                            case 4:
+                                ControllerEmpresa.listar();
                                 break;
                         }
-                    }while (opcionEmpresa != 5);
+                    }while (opcionEmpresa != 2);
                     break;
             }
 
