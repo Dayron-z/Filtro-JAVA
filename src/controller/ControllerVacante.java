@@ -78,6 +78,15 @@ public class ControllerVacante {
         int id = Integer.parseInt(JOptionPane.showInputDialog(listarString() + "\nIngrese el id de la vacante  que desea eliminar"));
         instanceModel().delete(id);
     }
+    public static void listarPorTitulo(){
+        String nombre = JOptionPane.showInputDialog("Ingrese el nombre del titulo de vacante por el que desea filtrar");
+
+        String listaDeClientes = "LISTA DE VACANTES POR TITULO POR NOMBRE \n";
+        for (Object vacante :  instanceModel().buscarPorTituloVacante(nombre)){
+            listaDeClientes += (Vacante) vacante + "\n";
+        }
+        JOptionPane.showMessageDialog(null, listaDeClientes);
+    }
     public static ModelVacante instanceModel(){
         return new ModelVacante();
     }
