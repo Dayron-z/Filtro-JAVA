@@ -36,8 +36,16 @@ public class Contratacion {
         this.id_coder = id_coder;
     }
 
-    public Contratacion(String fecha_aplicacion, Estado estado, BigDecimal salario, int id_vacante, int id_coder) {
-        this.fecha_aplicacion = fecha_aplicacion;
+
+    public Contratacion(int id, Estado estado, BigDecimal salario, int id_vacante, int id_coder) {
+        this.id = id;
+        this.estado = estado;
+        this.salario = salario;
+        this.id_vacante = id_vacante;
+        this.id_coder = id_coder;
+    }
+
+    public Contratacion(Estado estado, BigDecimal salario, int id_vacante, int id_coder) {
         this.estado = estado;
         this.salario = salario;
         this.id_vacante = id_vacante;

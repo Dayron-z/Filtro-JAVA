@@ -67,21 +67,19 @@ public class ModelContratacion implements CRUD {
 
 
     }
-
     @Override
     public Object create(Object obj) {
         Contratacion objContratacion  = (Contratacion) obj;
         Connection objConnection = ConfigDB.openConnection();
 
         try {
-            String sql = "INSERT INTO vacante (fecha_aplicacion, estado, salario, id_vacante, id_coder) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO vacante (estado, salario, id_vacante, id_coder) VALUES (?, ?, ?, ?)";
             PreparedStatement objPrepare = objConnection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
-            objPrepare.setString(1, objContratacion.getFecha_aplicacion());
-            objPrepare.setString(2, String.valueOf(objContratacion.getEstado()));
-            objPrepare.setBigDecimal(3, objContratacion.getSalario());
-            objPrepare.setInt(4, objContratacion.getId_vacante());
-            objPrepare.setInt(5, objContratacion.getId_coder());
+            objPrepare.setString(1, String.valueOf(objContratacion.getEstado()));
+            objPrepare.setBigDecimal(2, objContratacion.getSalario());
+            objPrepare.setInt(3, objContratacion.getId_vacante());
+            objPrepare.setInt(4, objContratacion.getId_coder());
 
 
 
@@ -103,7 +101,6 @@ public class ModelContratacion implements CRUD {
         return objContratacion;
 
     }
-
     @Override
     public boolean update(Object obj) {
         Contratacion objContratacion = (Contratacion) obj;
@@ -112,15 +109,14 @@ public class ModelContratacion implements CRUD {
         Boolean isUpdate = false;
 
         try {
-            String sql = "UPDATE contratacion SET fecha_aplicacion = ?, estado = ?, salario = ? , id_vacante = ?, id_coder = ? WHERE id_contratacion = ?";
+            String sql = "UPDATE contratacion SET estado = ?, salario = ? , id_vacante = ?, id_coder = ? WHERE id_contratacion = ?";
             PreparedStatement objPrepare = objConnection.prepareStatement(sql);
 
-            objPrepare.setString(1, objContratacion.getFecha_aplicacion());
-            objPrepare.setString(2, String.valueOf(objContratacion.getEstado()));
-            objPrepare.setBigDecimal(3, objContratacion.getSalario());
-            objPrepare.setInt(4, objContratacion.getId_vacante());
-            objPrepare.setInt(5, objContratacion.getId_coder());
-            objPrepare.setInt(6, objContratacion.getId());
+            objPrepare.setString(1, String.valueOf(objContratacion.getEstado()));
+            objPrepare.setBigDecimal(2, objContratacion.getSalario());
+            objPrepare.setInt(3, objContratacion.getId_vacante());
+            objPrepare.setInt(4, objContratacion.getId_coder());
+            objPrepare.setInt(5, objContratacion.getId());
 
 
             int filasAfectadas =  objPrepare.executeUpdate();
@@ -140,7 +136,6 @@ public class ModelContratacion implements CRUD {
 
 
     }
-
     @Override
     public boolean delete(Object obj) {
         Connection objConnection = ConfigDB.openConnection();
@@ -167,7 +162,6 @@ public class ModelContratacion implements CRUD {
 
 
     }
-
     public Object findByID(int id){
         Contratacion objContratacion = new Contratacion();
         Connection objConnection = ConfigDB.openConnection();
